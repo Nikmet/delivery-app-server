@@ -2,6 +2,7 @@ import { Body, Controller, HttpCode, Post, UsePipes, ValidationPipe } from "@nes
 import { AuthService } from "./auth.service.js";
 import { AuthDTO } from "./dto/auth.dto.js";
 import { RefreshTokenDTO } from "./dto/tokens.dto.js";
+import { Auth } from "../decorators/auth.decorator.js";
 
 @Controller("auth")
 export class AuthController {
@@ -23,6 +24,7 @@ export class AuthController {
 
     @UsePipes(new ValidationPipe())
     @HttpCode(200)
+    @Auth()
     @Post("login/access-token")
     async getNewTokens(@Body() dto: RefreshTokenDTO) {
         return this.authService.getNewTokens(dto.refreshToken);
