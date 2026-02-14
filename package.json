@@ -7,7 +7,7 @@
     "private": true,
     "license": "UNLICENSED",
     "scripts": {
-        "build": "nest build && tsc-alias -p tsconfig.build.json",
+        "build": "prisma generate && nest build && tsc-alias -p tsconfig.build.json",
         "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
         "migrate": "prisma migrate dev",
         "start": "nest start",
